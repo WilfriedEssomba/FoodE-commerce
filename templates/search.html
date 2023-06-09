@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="text-2xl">Search</h1>
+
+    <h2 class="text-xs text-gray-600">Search results for "{{ query }}":</h2>
+
+    {% if products %}
+        {% include 'home.html' %}
+    {% else %}
+        <p>There are no products matching this query!</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+<nav >
+    <nav class="navbar navbar-expand-lg bg-info-subtle">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}"><h1>WE</h1></a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if not request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=" {% url 'login' %}">Login</a>
+              </li>
+              {% endif %}
+              
+                {% if request.user.is_authenticated %}
+              {% if request.user.userprofile.is_vendor%}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'my_store' %}">Restaurant</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'cart_view' %}">Cart</a>
+              </li>
+              {% endif %}
+            </ul>
+            <form>
+              {% if request.user.is_authenticated %}
+              <p> {{ user.username}}</p>
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              {% endif %}            
+            </form>           
+            </form>
+          </div>
+        </div>
+      </nav>
+</nav>

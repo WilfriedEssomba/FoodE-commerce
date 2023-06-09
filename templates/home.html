@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <br>
+{% if request.user.is_authenticated %}
+<div>
+  <form method="POST" action="/search/">
+    {% csrf_token %}
+    <input type="search" name="query" placeholder="Search...">  
+    <button style="border: 0in; background-color: white;">
+      <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+      <lord-icon
+          src="https://cdn.lordicon.com/rlizirgt.json"
+          trigger="hover"
+          colors="primary:#121331"
+          scale="60"
+          axis-x="50"
+          axis-y="60"
+          style="width:20px;height:20px">
+      </lord-icon>
+  </button>
+  </form>
+</div>
+{% endif %}
+<br>
+
+<div class="row row-cols-1 row-cols-md-4 g-3">
+{% for product in products %}
+
+    <div class="col">
+      <div class="card h-100">
+        {% if product.image %}
+        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+        {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="card-text">Price - {{ product.price }}FCFA</p>
+            <a href="{% url 'resto_details' product.user.id %}" style="text-decoration: none;"><p>By: {{product.user }}</p></a>
+            <a href="{% url 'add_to_cart' product.id %}"><button type="submit" class="btn btn-primary">Add to cart</button></a>
+  
+        </div>
+      </div>
+    </div>
+ 
+  
+
+  
+{% endfor %}
+ </div>
+{% endblock content %}

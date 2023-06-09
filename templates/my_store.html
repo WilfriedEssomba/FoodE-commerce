@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <h6> {{message}} </h6>
+    {% endfor %}
+{% endif %}
+
+
+<h1>My Admin page</h1>
+
+<h2 class="">My orders</h2>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        {% for order_item in order_items %}
+        {% if order_item.order.is_performed %}
+            All orders a performed
+        {%else%}
+            <tbody>
+                <tr>
+                    <th scope="row"><a href="{% url 'my_store_order_detail' order_item.order.id %}">{{ order_item.order.first_name  }}</a></th>
+                    <td>{{ order_item.product.title }}</td>
+                    <td>{{ order_item.quantity }}</td>
+                    <td>{{ order_item.get_display_price }}FCFA</td>
+                </tr>
+            </tbody>
+        {% endif%}
+    {% endfor %}
+      </table>    
+
+    <hr>
+
+<h2 style="display: inline;">My Products</h2>
+
+<a href="{% url 'add_product'%}" style="display: inline;"><button class="btn btn-primary">Add Product</button></a>
+<br><br>
+{% if request.user.products%}
+<div class="row row-cols-1 row-cols-md-4 g-3">
+
+    {% for product in request.user.products.all %}
+    <div class="col">
+        <div class="card h-100">
+          {% if product.image %}
+          <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+          {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ product.title }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text">Price - {{ product.price }}FCFA</p>
+              <a href="{% url 'edit_product' product.id %}" style="text-decoration: none; color: blueviolet;"> Edit Product </a> <br>
+              <a href="{% url 'delete_product' product.id %}" style="text-decoration: none; color: blueviolet;"> delete Product </a>
+
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    {%else%}
+
+<h2>You have no products</h2>
+{% endif %}
+{% endblock content %}

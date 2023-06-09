@@ -1,0 +1,48 @@
+/* .nav-link{
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+} */
+.one{
+    position: relative;
+    height: 500px;
+    width: 100%;
+    background-size: 100%;
+    display: flex;
+}
+.one::before{
+    content: "";
+    background-image: url("img1.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.9;
+}
+.bro{
+    position: relative;
+    color: rgb(0, 0, 0);
+    width: 60%;
+    height: 40%;
+    margin-top: 14%;
+    margin-left: 5%;
+    float: left;
+}
+.cards{
+    margin-top:50px;
+    margin-left: 10%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+p{
+
+    margin-top: 5px;
+}
+a{
+    text-decoration: none;
+}

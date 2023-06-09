@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Order detail - {{ order.id }}{% endblock %}
+
+{% block content %}
+    <h3 class="#">Order detail - {{ order.id }}</h3>
+
+    <div>
+        <h5> Client Info</h5>
+        <p>First Name:  {{order.first_name}}</p>
+        <p>Last name:  {{order.last_name}}</p>
+        <p>Telephone:  {{order.Telephone}}</p>
+        <p>City:  {{order.city}}</p>
+        <p>Address:  {{order.address}}</p>
+    </div>
+    <hr><hr>
+    <h5 class="#">My products in this order</h5>
+
+    <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+
+        {% for item in order.items.all %}
+            {% if item.product.user == request.user %}
+            <tbody>
+          <tr>
+            <td>{{ item.product.title }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.get_display_price }}FCFA</td>
+          </tr>
+        </tbody>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+{% endblock %}

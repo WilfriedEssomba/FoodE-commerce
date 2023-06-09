@@ -1,0 +1,139 @@
+
+.main{
+    padding: 0%;
+    height: 800px;
+    margin-bottom: 0px;
+    margin-left: 150px;
+    display: inline;
+}
+.main div{
+    display: inline-block;
+    text-align: center;
+    height: 500px;
+    width: 500px;
+}
+.main .regist{
+    display: inline-block;
+    text-align: center;
+    height: 700px;
+    width: 700px;
+}
+.log{
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 100px;
+}
+.reg{
+    height: 500px;
+    background-image: linear-gradient(to right bottom, rgb(255, 255, 255), rgb(47, 106, 255),black);
+    padding-top: 164px;
+}
+.log input[type="submit"]{
+    width: 200px;
+    height: 35px;
+    /* padding-right:125px ;
+    padding-left:125px ; */
+    padding-top: 5px;
+    padding-bottom:5px ;
+    margin: 10px;
+    background-image: linear-gradient(to right bottom, rgb(46, 46, 46), rgb(47, 106, 255));
+    border-style: none;
+    border-radius: 10px;
+}
+
+/* .log input[type="email"]{
+    background-color: rgb(199, 199, 199);
+    padding-right:125px ;
+    padding-left:20px ;
+    padding-top: 10px;
+    padding-bottom:10px ;
+    margin: 10px;
+    border-style: none;
+} */
+/* .log input[type="password"]{
+    background-color: rgb(199, 199, 199);
+    padding-right:125px ;
+    padding-left:20px ;
+    padding-top: 10px;
+    padding-bottom:10px ;
+    margin: 10px;
+    border-style: none;
+} */
+
+.log input[type="username"]{
+    background-color: rgb(199, 199, 199);
+    padding-right:125px ;
+    padding-left:20px ;
+    padding-top: 10px;
+    padding-bottom:10px ;
+    margin: 10px;
+    border-style: none;
+}
+.log a{
+    color: black;
+    text-decoration: none;
+}
+/* .rb a{
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 900;
+} */
+.rb input[type="button"]{
+    width: 250px;
+    height: 35px;
+    font: 900;
+    padding-top: 5px;
+    padding-bottom:5px ;
+    margin: 10px;
+    background-image: linear-gradient(to right bottom, rgb(255, 255, 255), rgb(47, 106, 255),rgb(255, 255, 255));
+    border-style: none;
+    border-radius: 10px;
+}
+.regist{
+    height: 100%;
+    padding: 50px;
+    margin: 10px;
+    border: 10px solid black ;
+    background-image: linear-gradient(to right bottom, rgb(214, 214, 214), rgb(47, 106, 255));
+
+}
+.regist input[type="submit"]{
+    width: 250px;
+    height: 35px;
+    /* padding-right:125px ;
+    padding-left:125px ; */
+    padding-top: 5px;
+    padding-bottom:5px ;
+    margin: 10px;
+    background-image: linear-gradient(to right bottom, rgb(47, 106, 255), rgb(214, 214, 214));
+    border-style: none;
+    border-radius: 10px;
+}
+/* .regist input[type="text"]{
+    background-color: rgb(199, 199, 199);
+    padding-right:125px ;
+    padding-left:20px ;
+    padding-top: 10px;
+    padding-bottom:10px ;
+    margin: 10px;
+    border-style: none;
+}
+.regist input[type="email"]{
+    background-color: rgb(199, 199, 199);
+    padding-right:125px ;
+    padding-left:20px ;
+    padding-top: 10px;
+    padding-bottom:10px ;
+    margin: 10px;
+    border-style: none;
+}
+.regist input[type="password"]{
+    background-color: rgb(199, 199, 199);
+    padding-right:125px ;
+    padding-left:20px ;
+    padding-top: 10px;
+    padding-bottom:10px ;
+    margin: 10px;
+    border-style: none;
+} */
