@@ -31,6 +31,26 @@ def my_store_order_detail(request, pk):
         'order': order
     })
 
+@login_required
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            title = request.POST.get('title')
+            product = form.save(commit=False)
+            product.user = request.user
+            product.slug = slugify(title)
+            product.save()
+
+            messages.success(request, 'Product added successfully')
+
+            return redirect('my_store')
+    else:
+        form = ProductForm()
+
+    return render(request, 'add_product.html', {'form': form, 'title': 'Add Product'})
+
 
 @login_required
 def edit_product(request, pk):
@@ -51,26 +71,6 @@ def edit_product(request, pk):
     
     return render(request, 'add_product.html', {'form': form,'title': 'Edit Product'})
 
-
-@login_required
-def add_product(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            title = request.POST.get('title')
-            product = form.save(commit=False)
-            product.user = request.user
-            product.slug = slugify(title)
-            product.save()
-
-            messages.success(request, 'Product added successfully')
-
-            return redirect('my_store')
-    else:
-        form = ProductForm()
-
-    return render(request, 'add_product.html', {'form': form, 'title': 'Add Product'})
 
 @login_required
 def delete_product(request, pk):

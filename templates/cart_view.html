@@ -3,11 +3,12 @@
 {% block title %}Cart{% endblock %}
 
 {% block content %}
-    <h1 class="mb-6 text-2xl">Cart</h1>
+<div style="height: 100%;width: 100%;">
+    <h1 class="mb-6 text-2xl" style="margin-bottom:50px ;"></h1>
         <div class="row row-cols-1 row-cols-md-4 g-5">
             {% if cart|length %}
                 {% for item in cart %}
-                    <div class="col" >
+                    <div class="col">
 
                         
                             <h5 class="">{{ item.product.title }}</h5>
@@ -34,13 +35,21 @@
         <hr class=":">
 
         <strong>Total cost: </strong>{{ cart.get_total_cost }}FCFA
+        
+        <button style="background-color: #F02A2A; margin-left: 100px; height: 35px; width: 150px; background-color: #F02A2A;
+        border: #F02A2A;
+        border-radius: 50rem;
+        box-shadow: 0 0 1rem #F02A2A;
+        font-weight: 500;">
+            <a href="{% url 'checkout' %}" style="color: black; font-weight: 600;">Checkout</a>
+        </button>
 
         <hr class="">
 
-        <a href="{% url 'checkout' %}" >Checkout</a>
     {% else %}
         <div class="">
             You don't have any products in the cart yet...
         </div>
     {% endif %}
+</div>   
 {% endblock %}

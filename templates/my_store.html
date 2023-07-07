@@ -8,30 +8,73 @@
     {% endfor %}
 {% endif %}
 
+  {% if request.user.is_authenticated %}
+<h1 style="text-align: center;">
+    {{ user.username}}
+</h1>
+  {% endif %} 
 
-<h1>My Admin page</h1>
+  <h2 style="display: inline; margin-right: 30px;"><u>MY PRODUCTS</u></h2>
 
-<h2 class="">My orders</h2>
+<a href="{% url 'add_product'%}" style="display: inline;"><button class="btn btn-secondary" style="color: #000000; font-weight: 700; float: right; margin-right: 100px;">Add Product</button></a>
+<br><br>
+{% if request.user.products%}
+<div class="row row-cols-1 row-cols-md-4 g-1">
+  {% for product in products %}
+  
+      <div class="col">
+        <figure class="card">
+          {% if product.image %}
+          <img class="card_image" src="{{ product.image.url }}" alt="">
+          {% endif %}      
+          <figcaption class="card_body">
+            <div style="margin-top: 0%;">
+              <h5 class="card_title">{{ product.title }}</h5>
+              <p class="card_text">Price - {{ product.price }}FCFA</p>
+            </div>
+            <a href="{% url 'edit_product' product.id %}" style="text-decoration: none; color: #F02A2A;"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg> </a> <br>
+            
+            <a href="{% url 'delete_product' product.id %}" style="text-decoration: none; color: #F02A2A;"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+          </svg> </a>
+      </figcaption>
+        </figure>
+      </div>
+  {% endfor %}
+   </div>
+    {%else%}
+
+<h2>You have no products</h2>
+{% endif %}
+
+
+<h2><u>MY ORDERS</u></h2>
 
     <table class="table">
         <thead>
           <tr>
             <th scope="col">Order ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Quantity</th>
+            <th scope="col">Ordered by</th>
             <th scope="col">Price</th>
           </tr>
         </thead>
         {% for order_item in order_items %}
-        {% if order_item.order.is_performed %}
-            All orders a performed
+        {% if order_item.is_performed %}
+            
         {%else%}
             <tbody>
                 <tr>
-                    <th scope="row"><a href="{% url 'my_store_order_detail' order_item.order.id %}">{{ order_item.order.first_name  }}</a></th>
-                    <td>{{ order_item.product.title }}</td>
-                    <td>{{ order_item.quantity }}</td>
+                    <th>{{ order_item.id }}</th>
+                    <th scope="row">{{ order_item.order.first_name  }} {{ order_item.order.last_name  }}</th>
                     <td>{{ order_item.get_display_price }}FCFA</td>
+                    <th><a href="{% url 'my_store_order_detail' order_item.order.id %}" style="color: #F02A2A;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                      <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                      <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                    </svg></a></th>
                 </tr>
             </tbody>
         {% endif%}
@@ -40,33 +83,5 @@
 
     <hr>
 
-<h2 style="display: inline;">My Products</h2>
-
-<a href="{% url 'add_product'%}" style="display: inline;"><button class="btn btn-primary">Add Product</button></a>
-<br><br>
-{% if request.user.products%}
-<div class="row row-cols-1 row-cols-md-4 g-3">
-
-    {% for product in request.user.products.all %}
-    <div class="col">
-        <div class="card h-100">
-          {% if product.image %}
-          <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-          {% endif %}
-            <div class="card-body">
-              <h5 class="card-title">{{ product.title }}</h5>
-              <p class="card-text">{{ product.description }}</p>
-              <p class="card-text">Price - {{ product.price }}FCFA</p>
-              <a href="{% url 'edit_product' product.id %}" style="text-decoration: none; color: blueviolet;"> Edit Product </a> <br>
-              <a href="{% url 'delete_product' product.id %}" style="text-decoration: none; color: blueviolet;"> delete Product </a>
-
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-    </div>
-    {%else%}
-
-<h2>You have no products</h2>
-{% endif %}
+{%include 'footer.html'%}
 {% endblock content %}

@@ -55,7 +55,6 @@ class Order(models.Model):
     city = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     Telephone = models.CharField(max_length=255)
-    is_performed = models.BooleanField(default=False)
     created_by = models.ForeignKey(User, related_name='orders', on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -64,6 +63,7 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, related_name='items', on_delete=models.CASCADE)
     price = models.IntegerField()
     quantity = models.IntegerField(default=1)
-    
+    is_performed = models.BooleanField(default=False)
+
     def get_display_price(self):
         return self.price

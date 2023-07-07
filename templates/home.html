@@ -24,28 +24,26 @@
 {% endif %}
 <br>
 
-<div class="row row-cols-1 row-cols-md-4 g-3">
+<div class="row row-cols-1 row-cols-md-4 g-1">
 {% for product in products %}
 
     <div class="col">
-      <div class="card h-100">
+      <figure class="card">
         {% if product.image %}
-        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-        {% endif %}
-          <div class="card-body">
-            <h5 class="card-title">{{ product.title }}</h5>
-            <p class="card-text">{{ product.description }}</p>
-            <p class="card-text">Price - {{ product.price }}FCFA</p>
-            <a href="{% url 'resto_details' product.user.id %}" style="text-decoration: none;"><p>By: {{product.user }}</p></a>
-            <a href="{% url 'add_to_cart' product.id %}"><button type="submit" class="btn btn-primary">Add to cart</button></a>
-  
-        </div>
-      </div>
+        <img class="card_image" src="{{ product.image.url }}" alt="">
+        {% endif %}      
+        <figcaption class="card_body">
+          <div>
+            <h5 class="card_title">{{ product.title }}</h5>
+            <p class="card_text">Price - {{ product.price }}FCFA</p>
+            <a href="{% url 'resto_details' product.user.id %}" style="text-decoration: none; color: rgb(95, 95, 95);font-weight: 500;"><p>By: {{product.user }}</p></a>
+          </div>
+          <a href="{% url 'add_to_cart' product.id %}"><button type="submit" class="card_btn">Add to cart</button></a>
+        </figcaption>
+      </figure>
     </div>
- 
-  
-
-  
 {% endfor %}
  </div>
+
+{%include 'footer.html'%}
 {% endblock content %}

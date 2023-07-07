@@ -1,139 +1,74 @@
 
 .main{
     padding: 0%;
-    height: 800px;
-    margin-bottom: 0px;
-    margin-left: 150px;
-    display: inline;
-}
-.main div{
-    display: inline-block;
-    text-align: center;
-    height: 500px;
-    width: 500px;
-}
-.main .regist{
-    display: inline-block;
-    text-align: center;
-    height: 700px;
-    width: 700px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 .log{
-    height: 500px;
     background-color: rgb(255, 255, 255);
-    padding-top: 100px;
-}
-.reg{
-    height: 500px;
-    background-image: linear-gradient(to right bottom, rgb(255, 255, 255), rgb(47, 106, 255),black);
-    padding-top: 164px;
+    padding-top: 5%;
+    padding-bottom: 10%;
+    padding-left: 15%;
+    height: 100%;
+    width: 50%;
 }
 .log input[type="submit"]{
-    width: 200px;
+    width: 130px;
     height: 35px;
-    /* padding-right:125px ;
-    padding-left:125px ; */
     padding-top: 5px;
     padding-bottom:5px ;
-    margin: 10px;
-    background-image: linear-gradient(to right bottom, rgb(46, 46, 46), rgb(47, 106, 255));
+    margin-left: 25px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: #F02A2A;
     border-style: none;
     border-radius: 10px;
-}
-
-/* .log input[type="email"]{
-    background-color: rgb(199, 199, 199);
-    padding-right:125px ;
-    padding-left:20px ;
-    padding-top: 10px;
-    padding-bottom:10px ;
-    margin: 10px;
-    border-style: none;
-} */
-/* .log input[type="password"]{
-    background-color: rgb(199, 199, 199);
-    padding-right:125px ;
-    padding-left:20px ;
-    padding-top: 10px;
-    padding-bottom:10px ;
-    margin: 10px;
-    border-style: none;
-} */
-
-.log input[type="username"]{
-    background-color: rgb(199, 199, 199);
-    padding-right:125px ;
-    padding-left:20px ;
-    padding-top: 10px;
-    padding-bottom:10px ;
-    margin: 10px;
-    border-style: none;
+    font-weight: 600;
 }
 .log a{
-    color: black;
+    color: rgb(255, 0, 0);
     text-decoration: none;
 }
-/* .rb a{
-    color: black;
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: 900;
-} */
-.rb input[type="button"]{
-    width: 250px;
-    height: 35px;
-    font: 900;
-    padding-top: 5px;
-    padding-bottom:5px ;
-    margin: 10px;
-    background-image: linear-gradient(to right bottom, rgb(255, 255, 255), rgb(47, 106, 255),rgb(255, 255, 255));
-    border-style: none;
-    border-radius: 10px;
-}
-.regist{
+.reg{
+    background-color: rgb(255, 255, 255);
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 15%;
     height: 100%;
-    padding: 50px;
-    margin: 10px;
-    border: 10px solid black ;
-    background-image: linear-gradient(to right bottom, rgb(214, 214, 214), rgb(47, 106, 255));
-
+    width: 50%;
 }
-.regist input[type="submit"]{
-    width: 250px;
+.reg input[type="submit"]{
+    width: 130px;
     height: 35px;
-    /* padding-right:125px ;
-    padding-left:125px ; */
     padding-top: 5px;
     padding-bottom:5px ;
-    margin: 10px;
-    background-image: linear-gradient(to right bottom, rgb(47, 106, 255), rgb(214, 214, 214));
+    margin-left: 28px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: #F02A2A;
     border-style: none;
     border-radius: 10px;
+    font-weight: 600;
 }
-/* .regist input[type="text"]{
-    background-color: rgb(199, 199, 199);
-    padding-right:125px ;
-    padding-left:20px ;
-    padding-top: 10px;
-    padding-bottom:10px ;
-    margin: 10px;
-    border-style: none;
+.reg a{
+    color: rgb(255, 0, 0);
+    text-decoration: none;
 }
-.regist input[type="email"]{
-    background-color: rgb(199, 199, 199);
-    padding-right:125px ;
-    padding-left:20px ;
-    padding-top: 10px;
-    padding-bottom:10px ;
-    margin: 10px;
-    border-style: none;
+.msg{
+    background-color: rgb(255, 255, 255);
+    padding-top: 5%;
+    padding-bottom: 10%;
+    padding-left: 5%;
+    height: 100%;
+    width: 50%;
 }
-.regist input[type="password"]{
-    background-color: rgb(199, 199, 199);
-    padding-right:125px ;
-    padding-left:20px ;
-    padding-top: 10px;
-    padding-bottom:10px ;
-    margin: 10px;
-    border-style: none;
-} */
+.msg p{
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: inherit;
+}
+.msg svg{
+    margin-right: 5px;
+}

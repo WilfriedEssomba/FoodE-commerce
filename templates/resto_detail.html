@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<h1> {% firstof user.get_full_name user.username %}</h1>
-{% for product in user.products.all %}
-  <div class="card" style="width: 18rem;">
+<h1> {{ user.username}}</h1>
+<div class="row row-cols-1 row-cols-md-3 g-2" style="color: white;">
+  {% for product in user.products.all %}
+  <div class="col">
+    <div class="card" style="width: 450px; height: 300px;">
     <div class="card-body">
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">{{ product.description }}FCFA</p>
         <p class="card-text">Price - {{ product.price }}FCFA</p>
-        <p>By: {{product.user }}</p>
-    </div>
+        <a href="{% url 'add_to_cart' product.id %}"><button type="submit" class="card_btn">Add to cart</button></a>
+      </div>
   </div>
+</div>
+  
 {% endfor %}
+</div>
+
 
 {% endblock content %}

@@ -1,15 +1,12 @@
 <nav >
-    <nav class="navbar navbar-expand-lg bg-info-subtle">
+    <nav class="navbar sticky-top navbar-expand-lg bg-black">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'home' %}"><h1>WE</h1></a>
+          <a class="navbar-brand" href="{% url 'home' %}"><h1>QuickBite</h1></a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               {% if not request.user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'index' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href=" {% url 'login' %}">Login</a>
@@ -27,13 +24,13 @@
               </li>
               {% endif %}
             </ul>
-            <form>
+            <div style="display: flex; flex-direction: row;">
               {% if request.user.is_authenticated %}
-              <p> {{ user.username}}</p>
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              <p style="color: #F02A2A; margin-right: 10px; font-size: 20px; font-weight: 600;"> {{ user.username}}</p>
+              <p><a class="nav-link" href="{% url 'logout' %}">  Logout</a></p>
+                
               {% endif %}            
-            </form>           
-            </form>
+            </div>           
           </div>
         </div>
       </nav>
